@@ -103,7 +103,6 @@ class UserController extends Controller
             ]);
             if ($userHasAccount->wasRecentlyCreated) {
                 $userHasAccount->access_token = $userHasAccount->createToken("Basmety", ["user"])->plainTextToken;
-                $userHasAccount->creator_id = $userHasAccount->id;
                 $userHasAccount->save();
                 $userHasAccount->markEmailAsVerified();
             } else {
@@ -238,10 +237,9 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "first_name" => ["required", "string", "max:60"],
-            "last_name" => ["required", "string", "max:60"],
+            "name" => ["required", "string", "max:60"],
+            "phone" => ["required", "string", "max:60"],
             "email" => ["required", "email:rfc,filter", "unique:users,email"],
-            "gender" => ["nullable", "integer", "in:1,2"],
             "password" => ["required", "confirmed", PasswordRules::min(8)],
             "UUID" => ["nullable", "string"],
         ]);
@@ -250,21 +248,18 @@ class UserController extends Controller
         }
         $folder = $this->uniqueDirName("Users");
         $user = User::create([
-            "first_name" => $request->first_name,
-            "last_name" => $request->last_name,
+            "name" => $request->name,
+            "phone" => $request->phone,
             "email" => $request->email,
             "password" => Hash::make($request->password),
-            "gender" => $request->filled("gender") ? $request->gender : null,
-            "folder" => $folder,
             "access_token" => "",
             "UUID" => $request->filled("UUID") ? $request->UUID : null,
         ]);
         if ($user->wasRecentlyCreated) {
-            $user->access_token = $user->createToken("Basmety", ["user"])->plainTextToken;
-            $user->creator_id = $user->id;
+            $user->access_token = $user->createToken("khraba", ["user"])->plainTextToken;
             // $user->assignRole("user");
             $user->save();
-            $user->sendEmailVerificationNotification();
+           // $user->sendEmailVerificationNotification();
             return response()->success(array(new UserLoginResource($user)), trans("api/user.registered_successfully"));
         } else {
             $error = array(["failed" => [trans("api/user.failed_operation")]]);

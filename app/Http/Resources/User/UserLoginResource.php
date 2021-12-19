@@ -17,10 +17,11 @@ class UserLoginResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'email_verified_at' => $this->email_verified_at != null ? $this->email_verified_at->format('Y-m-d h:i:s') : null,
-            'image' => Storage::disk('public')->url($this->image != null ? $this->folder . '/' . $this->image : '/Users/avatar.png'),
+            'phone' => $this->phone,
+            'email' => $this->email,
+            'branch' => $this->branch,
+            'image' => Storage::disk('public')->url($this->image != null ?  '/employe/' . $this->image : '/Users/avatar.png'),
+            'qrCode' => Storage::disk('public')->url($this->qr_code != null ? '/employe/' . $this->image : '/Users/avatar.png'),
             'access_token' => $this->access_token,
         ];
     }

@@ -28,8 +28,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'branch_id',
         'access_token',
         'UUID',
+        'qr_code',
         'password',
-        'creator_id',
         'type',
     ];
 
@@ -58,18 +58,9 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new ResetPasswordNotification($reset_link));
     }
 
-    public function getNameAttribute()
+    public function branch()
     {
-        return "{$this->first_name} {$this->last_name}";
+        return $this->hasOne(Branch::class, 'id', 'branch_id');
     }
 
-    public function addresses()
-    {
-        return $this->hasMany(UserAddress::class, 'user_id', 'id');
-    }
-
-    public function favourites()
-    {
-        return $this->hasMany(ShopFavourite::class, 'user_id', 'id');
-    }
 }

@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->text('access_token')->nullable();
             $table->text('UUID')->comment("Fire Base Notifications")->nullable();
             $table->string('image')->nullable();
+            $table->string('qr_code')->nullable();
             $table->foreignId('branch_id')->nullable();
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->softDeletes();
