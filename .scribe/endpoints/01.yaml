@@ -1,0 +1,67 @@
+name: 'Contact Messages'
+description: |-
+
+  <aside class="notice">Author Fahmi Moustafa</aside>
+  APIs Contact Messages
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/contactus/store
+    metadata:
+      title: 'Store user Message to database.'
+      description: 'an API which Offers a mean to Store user Message to database.'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'user name.'
+        required: true
+        example: 'Fahmi Moustafa'
+        type: string
+      email:
+        name: email
+        description: 'the user E-Mail address.'
+        required: true
+        example: user@company.com
+        type: string
+      mobile_field:
+        name: mobile_field
+        description: 'user mobile number.'
+        required: true
+        example: '999988866'
+        type: string
+      message:
+        name: message
+        description: 'user Message.'
+        required: true
+        example: 'My Message'
+        type: string
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []

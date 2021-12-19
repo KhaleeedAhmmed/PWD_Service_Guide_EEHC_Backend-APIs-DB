@@ -1,0 +1,114 @@
+name: 'Shop Management'
+description: |-
+
+  <aside class="notice">Author Fahmi Moustafa</aside>
+  APIs for managing Shop data
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/shop/details
+    metadata:
+      title: 'Shop Details.'
+      description: 'an API which shops a mean to find Shop details.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters:
+      city:
+        name: city
+        description: 'city id.'
+        required: true
+        example: 1
+        type: integer
+      shop:
+        name: shop
+        description: 'shop id.'
+        required: true
+        example: 1
+        type: integer
+    bodyParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/shop/list
+    metadata:
+      title: 'List Shops data.'
+      description: 'an API which shops a mean to List Shops data.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters:
+      city:
+        name: city
+        description: 'city id.'
+        required: true
+        example: 1
+        type: integer
+      category:
+        name: category
+        description: 'Shop Category id.'
+        required: true
+        example: 1
+        type: integer
+      items:
+        name: items
+        description: '(optional) items per page.'
+        required: false
+        example: 10
+        type: integer
+      page:
+        name: page
+        description: '(optional) number of desired page.'
+        required: false
+        example: 1
+        type: integer
+    bodyParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []

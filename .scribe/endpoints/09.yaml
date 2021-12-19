@@ -1,0 +1,796 @@
+name: 'User Management'
+description: |-
+
+  <aside class="notice">Author Fahmi Moustafa</aside>
+  APIs for managing Users
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/auth/login
+    metadata:
+      title: 'Login user.'
+      description: 'an API which Offers a mean to login a user'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'The E-Mail address of the user. Must be a valid email address.'
+        required: true
+        example: user@company.com
+        type: string
+      password:
+        name: password
+        description: 'The password of User account.'
+        required: true
+        example: Us20er20
+        type: string
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/auth/verification-url
+    metadata:
+      title: 'Send Email Verification.'
+      description: 'an API which Offers a mean to send verification link to user email if not verified.'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/auth/forget
+    metadata:
+      title: 'Forget Password user.'
+      description: 'an API which Offers a mean to request reset password for logged out users.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'user E-Mail Address.'
+        required: true
+        example: user@gmail.com
+        type: string
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/auth/change
+    metadata:
+      title: 'Change Password user.'
+      description: 'an API which Offers a mean to reset password for logged in users.'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      old_password:
+        name: old_password
+        description: 'length [8:20] must have 1 number 1 Capital Letter 1 Small Letter The user old password.'
+        required: true
+        example: User2020
+        type: string
+      password:
+        name: password
+        description: 'length [8:20] must have 1 number 1 Capital Letter 1 Small Letter The user new password.'
+        required: true
+        example: Us20er20
+        type: string
+      password_confirmation:
+        name: password_confirmation
+        description: 'length [8:20] must have 1 number 1 Capital Letter 1 Small Letter The user new password confirmation.'
+        required: true
+        example: Us20er20
+        type: string
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/user/auth/logout
+    metadata:
+      title: 'Logout user.'
+      description: 'an API which Offers a mean to logout a user.'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/user/profile
+    metadata:
+      title: 'User Profile.'
+      description: 'an API which Offers a mean to view user data (profile).'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/auth/register
+    metadata:
+      title: 'Register user.'
+      description: 'an API which Offers a mean to register a user.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      first_name:
+        name: first_name
+        description: 'user first name.'
+        required: true
+        example: Fahmi
+        type: string
+      last_name:
+        name: last_name
+        description: 'user last name.'
+        required: true
+        example: Moustafa
+        type: string
+      email:
+        name: email
+        description: 'the user Email address.'
+        required: true
+        example: user@company.com
+        type: string
+      gender:
+        name: gender
+        description: 'in [1:2] 1 Male 2 Female.'
+        required: false
+        example: 1
+        type: integer
+      password:
+        name: password
+        description: 'length [8:20] user password must have 1 number 1 Capital Letter 1 Small Letter.'
+        required: true
+        example: Us20er20
+        type: string
+      UUID:
+        name: UUID
+        description: 'user UUID for FireBase Notifications.'
+        required: false
+        example: dsf6sd5g5ds6g56sd5g6sd5g6s6a5d6
+        type: string
+      password_confirmation:
+        name: password_confirmation
+        description: 'length [8:20] user password must have 1 number 1 Capital Letter 1 Small Letter.'
+        required: true
+        example: Us20er20
+        type: string
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/profile/edit
+    metadata:
+      title: 'Edit user profile.'
+      description: 'an API which Offers a mean to edit user profile.'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      first_name:
+        name: first_name
+        description: 'length [1:60] user first name.'
+        required: false
+        example: Ali
+        type: string
+      last_name:
+        name: last_name
+        description: 'length [1:60] user last name.'
+        required: false
+        example: Basem
+        type: string
+      gender:
+        name: gender
+        description: 'in [1:2] 1 Male 2 Female.'
+        required: false
+        example: 1
+        type: integer
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/profile/image
+    metadata:
+      title: 'Store or Edit Profile Image.'
+      description: 'an API which Offers a mean to user profile image.'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: multipart/form-data
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      image:
+        name: image
+        description: 'max size 2MB | MIMES jpg,jpeg,png user profile image.'
+        required: true
+        example: null
+        type: file
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/address/store
+    metadata:
+      title: 'Store Address Data.'
+      description: 'an API which Offers a mean to Store Address Data.'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      address:
+        name: address
+        description: 'user address.'
+        required: true
+        example: '22 12 325 snew Mosko Rusia'
+        type: string
+      longitude:
+        name: longitude
+        description: 'user address longitude value.'
+        required: true
+        example: 42.15254633
+        type: number
+      latitude:
+        name: latitude
+        description: 'user address latitude value.'
+        required: true
+        example: 37.15254633
+        type: number
+      street:
+        name: street
+        description: 'user address.'
+        required: true
+        example: snew
+        type: string
+      building:
+        name: building
+        description: 'user address.'
+        required: false
+        example: '325'
+        type: string
+      floor:
+        name: floor
+        description: 'user address.'
+        required: false
+        example: '12'
+        type: string
+      apartment:
+        name: apartment
+        description: 'user address.'
+        required: false
+        example: '22'
+        type: string
+      mobile_field:
+        name: mobile_field
+        description: 'length UAE mobile number.'
+        required: true
+        example: '554147429'
+        type: string
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/address/edit
+    metadata:
+      title: 'Edit Address Data.'
+      description: 'an API which Offers a mean to Edit Address Data.'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      address_id:
+        name: address_id
+        description: 'user address id.'
+        required: true
+        example: 1
+        type: integer
+      address:
+        name: address
+        description: 'user address.'
+        required: true
+        example: '22 12 325 snew Mosko Rusia'
+        type: string
+      longitude:
+        name: longitude
+        description: 'user address longitude value.'
+        required: true
+        example: 42.15254633
+        type: number
+      latitude:
+        name: latitude
+        description: 'user address latitude value.'
+        required: true
+        example: 37.15254633
+        type: number
+      street:
+        name: street
+        description: 'user address.'
+        required: true
+        example: snew
+        type: string
+      building:
+        name: building
+        description: 'user address.'
+        required: false
+        example: '325'
+        type: string
+      floor:
+        name: floor
+        description: 'user address.'
+        required: false
+        example: '12'
+        type: string
+      apartment:
+        name: apartment
+        description: 'user address.'
+        required: false
+        example: '22'
+        type: string
+      mobile_field:
+        name: mobile_field
+        description: 'length UAE mobile number.'
+        required: true
+        example: '554147429'
+        type: string
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/address/delete
+    metadata:
+      title: 'Delete Address Data.'
+      description: 'an API which Offers a mean to Delete Address Data.'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      address_id:
+        name: address_id
+        description: 'user address id.'
+        required: true
+        example: 1
+        type: integer
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/address/list
+    metadata:
+      title: 'List All Addresses Data.'
+      description: 'an API which Offers a mean to List All Addresses Data.'
+      authenticated: true
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters:
+      items:
+        name: items
+        description: '(optional) items per page.'
+        required: false
+        example: 10
+        type: integer
+      page:
+        name: page
+        description: '(optional) number of desired page.'
+        required: false
+        example: 1
+        type: integer
+    bodyParameters:
+      items:
+        name: items
+        description: ''
+        required: false
+        example: 6
+        type: integer
+      page:
+        name: page
+        description: ''
+        required: false
+        example: 5
+        type: integer
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/auth/sociallogin
+    metadata:
+      title: 'Login user by Social.'
+      description: 'an API which Offers a mean to login a user by social media'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      first_name:
+        name: first_name
+        description: 'user first name.'
+        required: true
+        example: Fahmi
+        type: string
+      last_name:
+        name: last_name
+        description: 'user last name.'
+        required: true
+        example: Moustafa
+        type: string
+      email:
+        name: email
+        description: 'the user Email address.'
+        required: true
+        example: user@company.com
+        type: string
+      image:
+        name: image
+        description: 'image url.'
+        required: false
+        example: 'http://google.com/profile/avatar.png'
+        type: string
+      social_UUID:
+        name: social_UUID
+        description: 'social UUID.'
+        required: false
+        example: Us20er20
+        type: string
+      UUID:
+        name: UUID
+        description: 'user UUID for FireBase Notifications.'
+        required: false
+        example: dsf6sd5g5ds6g56sd5g6sd5g6s6a5d6
+        type: string
+      logged_by:
+        name: logged_by
+        description: '1 google | 2 facebook.'
+        required: true
+        example: 1
+        type: integer
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []

@@ -1,0 +1,42 @@
+name: 'Contact Info'
+description: |-
+
+  <aside class="notice">Author Fahmi Moustafa</aside>
+  APIs Contact Info
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/contactus/all
+    metadata:
+      title: 'Fetch all Contact Info.'
+      description: 'an API which Offers a mean to fetch all Contact Info.'
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Api-Version: v1
+      Api-Locale: ar
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "success": false,
+              "error": [
+                  {
+                      "failed": [
+                          ""
+                      ]
+                  }
+              ],
+              "message": ""
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
